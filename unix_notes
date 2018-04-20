@@ -1,1 +1,0 @@
-passing something to | head -n 3 displays only the top 3 lines of the last message. It's fantastic.
