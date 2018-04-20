@@ -1,0 +1,58 @@
+CHAPTER 1. INTRODUCTION
+=============================================
+	* Software Entropy
+		* The first law of thermodynamics applied to software, it's called "software rot"
+
+Tip 4 - Don't live with Broken Windows
+---------------------------------------------
+	* fix bad design, wrong decisions, or poor code as soon as it appears, or at least take some action to prevent further damage.
+
+Tip 5 - Be a Catalyst for Change
+---------------------------------------------
+	* Ongoing success and small wins are powerful, use them to get support for your project or idea.
+
+Tip 6 - Remember the Big Picture
+---------------------------------------------
+
+Tip 7 - Make Quality a Requirements Issue
+---------------------------------------------
+	* Many people would actually rather use an imperfect product than a late one. Great projects today are better than perfect projects tomorrow. Know when to stop.
+
+Tip 8 - Invest Regularly in your Knowledge Portfolio
+---------------------------------------------------------
+	* "An investment in knowledge always pays the best interest" - Ben Franklin
+
+Tip 9 - Critically Analyze what you Read and Hear
+---------------------------------------------------------
+	* Commercialism is extremely powerful, and there is no "universal solution". Except vim. Long live the cult of vim.
+
+Tip 10 - It's Both what you Say and how you Say it
+---------------------------------------------
+	
+CHAPTER 2. A PRAGMATIC APPROACH
+=====================================
+
+Tip 11 - Don't Repeat Yourself
+---------------------------------------------
+	* Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
+	* Keep comments high-level, and keep low-level knowledge like loops in the code. This is an example of not repeating yourself.
+	* Untrustworthy comments are worse than no comments at all. Comments inevitably will become out of date. So BE CAREFUL. 
+	* It is best to generate documentation whenever possible from the code itself, which I really want to learn how to do.
+	* Don't store dependent quantities in classes, calculate them as needed (can use properties or functions for this in python)
+	* Frequently later in development you violate DRY for performance reasons, but do your best to localize the import.
+	* "shortcuts make for long delays"
+
+Tip 12 - Make it easy to reuse
+---------------------------------------------
+	* Make **orthogonal** systems. This means make them as independent as possible
+
+Tip 13 - Eliminate effects between unrelated things.
+---------------------------------------------
+	* self-containment is a good thing to avoid unbelievable complexity.
+	* This is why encapsulation is so strongly enforced in Java and other languages
+	* it isolates *diseased* code sections
+	* it also makes it much easier to work on teams, because everyone is working on independent pieces of code 
+	* *modular* and *layered* are two other words for orthogonal
+	* abstraction is a form of orthogonality
+	* aspect-oriented programming is what python implements with decorators
+	* avoid global data at all costs

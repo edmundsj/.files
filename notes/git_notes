@@ -36,6 +36,7 @@ GIT COMMANDS
 	- git reset: unstages all the added file changes, leaving contents alone
 		- git reset --hard: changes all tracked files to the most recent commit
 		- git reset --mixed HEAD~1 moves the checked out snapshot to a new commit and reset the commit immediately before the HEAD. --mixed preserves the working directory so we can modify the commit files
+		- git reset HEAD filename: used to unstage a file from a commit
 		
 	- git clean -f: removes all untracked files
 
@@ -69,6 +70,15 @@ GIT COMMANDS
 		- git push <repo_name> <tag_name>: pushes a tag to a remote repository
 	
 	- git pull <from_branch> <to_branch>: pulls the remote repository (performs a fetch followed by a merge)
+
+	- git archive master --format=zip --output=<file_path>.zip: allows you to permanently archive a current version of your repository
+
+	- git stash: stashes all uncommitted changes so you can work on something else
+		- git stash apply: restores original uncommitted changes
+
+	- git diff: shows differences uncommitted changes will cause	
+		- git diff HEAD~1..HEAD~2: shows the difference between two commit levels
+
 
 
 INTRODUCTION
@@ -151,3 +161,24 @@ CHAPTER 9 DISTRIBUTED WORKFLOWS
 
 CHAPTER 10 PATCH WORKFLOWS
 	* Apparently you can merge single commits, although this seems obvious b/c you can always just rebase your branches to a single commit.
+	* Basically, there is this thing called a patch. It lets you email a developer a single set of diffs and they can incorporate them manually or automatically. Doesn't seem critical.
+
+CHAPTER 11 TIPS AND TRICKS
+	* This chapter contains a bunch of practical commands, and a broad survey of git's useful utilities. Neat.
+	* You can archive git repositories as zip files. This creates git-independent backups of the current snapshot for an extra layer of caution. Doing this regularly sounds like good practice.
+	* You can also create git "bundles" which are basically single-file remote repositories. They can be directly cloned.
+	* Bundles back up entire repositories along with all the versioning information.
+	* .gitignore files in the working directory are used to ignore certain files (especially for larger projects)
+	* git stash temporarily reverts all uncommitted changes so you have a clean working directory and can start working on something else.
+	* stashes can actually be applied on a per-branch basis. That's kinda cray.
+
+CHAPTER 11.1 HOOKS INTO GITS INTERNALS
+	* This sounds absurdly useful, it sounds like it will prevent a whole lot of manual bullshit.
+	* it uses bash or shell scripting, which is great for me.
+	* git has aliases which are swag.
+
+CHAPTER 12 PLUMBING
+	* git stores files in "blobs", which are just the raw file data.
+	* git stores directories as "trees" that contain the blobs
+	* git shares blobs across multiple trees, which means it shares blobs across comitts when the blobs are the same.
+	* internally, branches are just stored as commits along with their connection to previous commits. Very sparse and very low overhead.
