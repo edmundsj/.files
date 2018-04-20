@@ -52,6 +52,7 @@ GIT COMMANDS
 		- git rebase -i <branch_name>: rebases the current branch to branch_name, and lets you add "pick", "edit", and "squash" commands to modify the commit history
 		- git rebase --continue: completes a rebase if you moved around wit h 'edit'
 		- git rebase --abort: aborts a rebase so you can try again
+		- git rebase origin/master: rebases current repository based on remote repository
 	
 	- git reflog: shows git commands from the first commit to the repository
 	
@@ -66,6 +67,8 @@ GIT COMMANDS
 
 	- git push <<branch_name>> <repo_name>: pushes the current branch to remote repository and gives it to them as a *local* repository
 		- git push <repo_name> <tag_name>: pushes a tag to a remote repository
+	
+	- git pull <from_branch> <to_branch>: pulls the remote repository (performs a fetch followed by a merge)
 
 
 INTRODUCTION
@@ -136,3 +139,15 @@ CHAPTER 8 CENTRALIZED WORKFLOWS
 	* 'publishing' refers to the act of pushing your local branch to the remote central repository
 	* git can use repositories on other computers by using ssh
 	* git push accomplishes the same thing as going to the central repository, performing a fetch, and then performing a merge
+	* you can either rebase your own repository based off the remote repository using rebase or merge changel with fetch/merge or just 'pull'
+	* AHHH so a bare repository does contain all the file information, and when it is cloned it WILL generate a working directory, but it's just used as storage space and the files cannot be modified locally. They can only be modified remotely (but they can be modified remotely)
+
+CHAPTER 9 DISTRIBUTED WORKFLOWS
+	* The 'integrator' workflow allows for multiple public repositories, and then you only pull from other's repositories into your central repository when you think the code is gucci.
+	* Creating a repository using github basically just runs git init --bare on the server in your directory
+	* Generally you don't give push access to your repository willy-nilly
+	* NEVER blindly integrate changes from a third party to your projects. Bad Bad Bad idea.
+	* It's a good idea to push your features to the main repository, and then pull from the official repository so your project doesn't get out-of-sync with the main project.
+
+CHAPTER 10 PATCH WORKFLOWS
+	* Apparently you can merge single commits, although this seems obvious b/c you can always just rebase your branches to a single commit.
