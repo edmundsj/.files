@@ -4,27 +4,30 @@ BOOK ACHIEVEMENTS:
 	* I now use git to maintain my notes, and I actually take notes on the books I am reading
 	* I created a basic python program to analyze and print my time data
 	* I understand the very basics of reST documentation and have plans to use it once I finish reading my python books.
+	* I understand and agree with the principles of Tracer Bullets, DRY, Prototyping and Post-It Notes, Orthogonality, and Ruthless Testing.
 
 COMPLETED BOOKS:
 ----------------------
 	* (h) 04/11/2018-04/14/2018: A Smarter Way to Learn Python 
 	* (h) 04/15/2018-04/20/2018: Python Tricks: A Buffet of Awesome Features
 	* (h) 04/21-2018-04/22/2018: Ry's Git Tutorial
+	* (h) The Pragmatic Programmer from Journeyman to Master - Amazon
 
 CURRENT BOOKS:
 ----------------------
 	* (h) 04/15/2018-PRESENT: Practical Vim, 2nd Edition
 	* (h) 04/16/2018-PRESENT: Python Data Analysis Handbook
 	* (h) 04/19/2018-PRESENT: Fluent Python
-	* (h) The Pragmatic Programmer from Journeyman to Master - Amazon
+	* (h) Unix Shell Programming (3rd Edition) - Amazon
 
 FUTURE BOOKS:
 ----------------------
-	* (h) The Hitchhiker's Guide to Python (primarily for the documentation section)
-	* (m) Unix Shell Programming (3rd Edition) - Amazon
+	* (h) The Hitchhiker's Guide to Python (primarily for the documentation and testing sections)
 	* (m) Mastering Regular Expressions - Amazon
 	* (l) The Art of the Metaobject Protocol - Amazon
 	* (l) Pro Git - Amazon (purchased free kindle edition)
+	* Maybe a book on testing?  
+	* Effective C++ by Scott Meyer if you need it.
 
 (l) low priority
 (m) medium priority

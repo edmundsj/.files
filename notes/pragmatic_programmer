@@ -1,3 +1,13 @@
+Author: Jordan Edmunds
+Email: edmundsj@uci.edu
+Start Date: 04/20/2018
+
+
+.. toctree::
+	:caption: Table of Contents
+	:maxdepth: 2
+
+
 CHAPTER 1. INTRODUCTION
 =============================================
 	* Software Entropy
@@ -6,6 +16,7 @@ CHAPTER 1. INTRODUCTION
 Tip 4 - Don't live with Broken Windows
 ---------------------------------------------
 	* fix bad design, wrong decisions, or poor code as soon as it appears, or at least take some action to prevent further damage.
+	* Broken windows are the catalyst that causes catastrophe, both in human neighborhoods and in software projects.
 
 Tip 5 - Be a Catalyst for Change
 ---------------------------------------------
@@ -21,10 +32,12 @@ Tip 7 - Make Quality a Requirements Issue
 Tip 8 - Invest Regularly in your Knowledge Portfolio
 ---------------------------------------------------------
 	* "An investment in knowledge always pays the best interest" - Ben Franklin
+	* Read a technical book every month, and two personal books every month.
 
 Tip 9 - Critically Analyze what you Read and Hear
 ---------------------------------------------------------
 	* Commercialism is extremely powerful, and there is no "universal solution". Except vim. Long live the cult of vim.
+	* Never forget to critically analyze things that are offered as a panacea. They aren't. Everything has trade-offs.
 
 Tip 10 - It's Both what you Say and how you Say it
 ---------------------------------------------
@@ -32,7 +45,7 @@ Tip 10 - It's Both what you Say and how you Say it
 CHAPTER 2. A PRAGMATIC APPROACH
 =====================================
 
-Tip 11 - Don't Repeat Yourself
+Tip 11 - Don't Repeat Yourself (DRY)
 ---------------------------------------------
 	* Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
 	* Keep comments high-level, and keep low-level knowledge like loops in the code. This is an example of not repeating yourself.
@@ -47,7 +60,7 @@ Tip 12 - Make it easy to reuse
 	* Make **orthogonal** systems. This means make them as independent as possible
 
 Tip 13 - Eliminate effects between unrelated things.
----------------------------------------------
+---------------------------------------------------------
 	* self-containment is a good thing to avoid unbelievable complexity.
 	* This is why encapsulation is so strongly enforced in Java and other languages
 	* it isolates *diseased* code sections
@@ -56,3 +69,392 @@ Tip 13 - Eliminate effects between unrelated things.
 	* abstraction is a form of orthogonality
 	* aspect-oriented programming is what python implements with decorators
 	* avoid global data at all costs
+
+Tip 14 - There are no Final Decisions
+---------------------------------------------
+	* Things can change all the time. Architecture, hardware, management. You need to be ready for that.
+	* Hiding things behind abstract interfaces seems to be a common theme 
+
+Tip 15 - Use Tracer Bullets to Find the Target
+-----------------------------------------------------
+	* this is actually the same reason we write "hello world" software
+	* rapid development cycles and the idea of agile programming has superceded this advice.
+	* develop the absolute minimum viable product
+	* immediate feedback is INCREDIBLY valuable
+
+Tip 16 - Prototype to Learn
+-----------------------------------------------------
+	* prototyping is generating throwaway code, literally just to learn how to attack the problem
+	* I do this commonly I think without even knowing it.
+	* The value of prototyping is in the lessons learned not the code generated
+	* Prototypes can ignore correctness, completeness, robustness, and style
+	* Prototyping should often be done in a high-level language like python if possible
+	* Prototyping can be done on a whiteboard if you like
+
+Tip 17 - Program close to the Problem Domain
+-----------------------------------------------------
+	* *"The limits of language ar the limits of one's world"*
+	* I don't really agree with much of this philosophy, especially for what I will be using programming for. I am going to ignore it.
+
+Tip 18 - Estimate to Avoid Surprises
+-----------------------------------------------------
+	* Engineers are gods at this, I think I'll be good.
+	* This is basically "how to do math"
+	* A central question in all of engineering and science: *How Accurate is Accurate Enough?*
+	* Measurement can be quite helpful here, and is relatively easy when dealing with computers.
+
+Tip 19 - Iterate the Schedule with the Code
+-----------------------------------------------------
+	* The schedule *will* change as you get experience. That's ok.
+
+CHAPTER 3. THE BASIC TOOLS
+==================================
+This chapter may be the most important chapter of the book. Here, the authors go over the tools you should use, including a basic text editor, code generators, a shell, etc. I think I'm gonig to like this very much and have my ssuspicions about what I should be doing confirmed. They claim that *plain text* is the best substrate for the programmer to use, and they should be very comfortable with it.
+
+In conclusion, the authors recommend a few things:
+	1. Get very comfortable with the shell (the Unix shell)
+	2. Learn one text editor very well (vim)
+	3. Learn one text-manipulation language very well (Python)
+	4. Keep everything in plaintext and learn a plaintext markup language (reST)
+	5. Use Source control (Git, already doing it)
+
+Tip 20 - Keep Knowledge in Plain Text
+----------------------------------------
+	* LOL I'm literally doing jeust that right now.
+	* Although they are referring to data used for creating programs.
+
+Tip 21 - Use the Power of Command Shells
+------------------------------------------
+	* I agree completely lol.
+	* Sounds like getting really comfortable with the unix shell should be a very  high priority.
+
+Tip 22 - Use a Single Editor Well
+----------------------------------------
+	* You don't have to tell me twice. I'm all over this like jam on bread. 
+	* Long live the cult of vim.
+
+Tip 23 - Always use Source Control 
+----------------------------------------
+	* OK, OK, I'm doing it now. I'm using git, finally.
+	* It's basically a giant undo button, which is fantastic.
+	* On a related note, automating the build process is also a very good idea. Which I will do when I get there.
+
+Tip 24 - Fix the Problem, Not the Blame
+--------------------------------------------
+	* Debugging is problem solving, attack it without attacking other people
+	* It doesn't matter who caused the bug, it's your problem now.
+
+Tip 25 - Don't Panic
+----------------------------------------
+	* Everything will be okay lol.
+	* Always try to discover the root cause of the problem rather than just patch over the symptoms
+	* Tests need to be brutal about corner cases
+	* A debugger that allows you to visualize your data is extremely valuable
+	* matplotlib might be extremely valuable for this.
+	* Explaining the problem to someone else can actually help the debugging process and will often cause you to realize the answer mid-sentence
+
+Tip 26 - "select" Isn't Broken
+----------------------------------------
+	* The bug most likely exists in the code you are writing, not in the OS , the compiler, or a third-party product. It's possible, just much less profitable to guess.
+	* If you see hoof prints, think horses, not zebras.
+	* If you have nothing better to try, use a binary search.
+
+Tip 27 - Don't Assume It - Prove it
+----------------------------------------
+	* One of your assumptions is wrong. Almost by definition, if there's a bug one of your assumptions about how the software works is wrong.
+
+Tip 28 - Learn a Text Manipulation Language
+----------------------------------------
+	* Python will be my language of choice, along with the unix shell.
+	* I should get very comfortable using python to manipulate strings, source code, and plain text in general. Also numerical data (numPy), which is probably to me what plaintext is to programmers.
+
+Tip 29 - Write code that writes code
+----------------------------------------
+	* This might be a wee bit advanced at this stage.
+	* vim is actually a code generator itself, in its use of macros
+	* Use this to generate comments and a header in source code you are editing. It's a good idea, probably to bind this information to a macro using vim.
+	* Code generators can be used to create lookup tables (ok, so I have done this actually)
+	* This is actually a really good idea, I'd like to steal it.
+	* You *can* use this to write HTML, but I'm not sure it's a good idea when there is software you can learn that will do it for you, and much more, with minimal investment.
+
+CHAPTER 4. PRAGMATIC PARANOIA
+===============================
+Tip 30 - You Can't Write Perfect Software
+-----------------------------------------------
+	* R.I.P. the dream
+	* Code defensively, assume the idiots that wrote what you are using did a terrible job.
+	* Detect bad data, but constraints on it, don't even trust yourself.
+	* Code in defense against your own mistakes.
+	* *When everybody actually is out to get you, paranoia is just good thinking.*
+
+Tip 31 - Design with Contracts
+-----------------------------------------------
+	* Basically it involves documenting the rights and responsibilities of software modules
+	* changing arguments within a method can be very dangerous if the argument was actually a pointer.
+	* Base classes with methods that must be implemented are useful versions of this.
+	* Assertions are a great way of doing design by contract, as the compiler is basically checking your contract for you.
+	* You want to crash as early as possible so that you find bugs when your program is still nice and simple.
+	* you could actually use decorators to implement design by contract by enforcing that something must be greater than a certain value to proceed. That's actually a good fucking idea.
+	* It can be helpful to have driving constraints, or things that absolutely must happen, it designing by contract.
+
+Tip 32 - Crash Early
+-----------------------------------------------
+	* falling into the "it can't happen" mentality is common but should be avoided, because, yes it can, it actually just did.
+	* if there is an error you don't understand, something very very bad has happened. This is also true if something is working and you don't know why.
+	* exceptions are great.
+	* A dead program usually does a lot less damage than a crippled one.
+
+Tip 33 - If it Can't Happen, Use Assertions to Ensure that it Won't
+---------------------------------------------------------------------
+	* "This can never happen..." is a common programmer mantra.
+	* Try not to practice this comical kind of self-deception.
+	* Assertions are your best friend for this purpose
+	* Assertions can be disabled at compile time, make sure they don't do anything critical - they only check for the impossible.
+	* Assertions are not a substitute for error handling.
+	* Please, please don't optimize away assertions. Leave assertions turned on, even after the code is tested and works just fine. A corner case might emerge that you hadn't encountered yet.
+	* Testing NEVER finds all the bugs
+	* Try to avoid side effects of assertions and make them as simple and idiot-proof as possible.
+
+Tip 34 - Use Exceptions for Exceptional Problems
+---------------------------------------------------------------------
+	* Exceptions should be reserved for unexpected but possible events, not necessarily as the normal control flow of the program.
+	* Unrestricted exception use can lead to spaghetti code and difficult-to-interpret control flow.
+
+Tip 35 - Finish What You Start
+---------------------------------------------------------------------
+	* I'm trying lol. I need to stop adding function calls (books)
+	* always, always make sure you close out that file or deallocate that block of memory after you use it. (use with and context managers in python to improve both readability and do this properly)
+	* The routine that allocates a resource should also free it. Encapsulation is critical, making sure you don't have too many interdependencies all over the place.
+	* Avoid ugly global variables whenever possible.
+	* Deallocate resources in the opposite order you allocated them (like a stack push/pop routine) so you don't orphan a resource dependent on another one.
+
+CHAPTER 5 BEND OR BREAK
+=================================
+
+Tip 36 - Minimize Coupling Between Modules 
+----------------------------------------------
+	* A good way to stay flexible is to write less code
+	* We want objects to keep our life as headache-free as possible. We do not want that object to give us another third-party object to deal with ourselves.
+
+Tip 37 - Configure, Don't Integrate
+----------------------------------------------
+	* "No amount of genius can overcome a preoccupation with detail" - Levy's eight law
+	* We want to make our system highly configurable. Really? I actually like this one.
+	* Metadata for things like installation directory, tuning parameters, user preferences should all be configurable
+	* key/value pairs (dictionaries in python) is a common form of metadata
+
+Tip 38 - Put Abstractions in Code Details in Metadata
+-----------------------------------------------------------
+	* We actually want to *code* with metadata as much as possible
+	* We want to think in terms of *what* needs to be done, not *how*
+	* Try not to put super low-level configuration information in the metadata, but infer the low level configuration from high-level preferences.
+	* Try to represent configuration data as plain text as much as possible.
+	
+Tip 39 - Optimize Workflow to Improve Concurrency
+--------------------------------------------------------
+	* concurrency: things happening at the same time
+	* ordering: the relative position of things in time
+	* UML activity diagrams are actually kind of interesting
+
+Tip 40 - Design Using Services
+-----------------------------------------------------------
+	* Not sure how relevant this is to my design, but w/e
+	* Try to create concurrency to increase performance
+	* Unfortunately this trades off complexity and may not be worth it.
+	* The author says forcing you to think about concurrency helps to bring out the hidden time dependencies in your system.
+
+Tip 41 - Always Design for Concurrency
+-----------------------------------------------------------
+	* For UI Applications, this does actually seem important.
+	* How is it done?
+	* I'm not actually sure how we design for concurrency. Just make sure that functions clean themselves up and don't retain an intermediate state?
+
+Tip 42 - Separate Views from Models (another DRY)
+-----------------------------------------------------------
+	* Apparently 'events' are how we design for concurrency. Events basically just say "something interesting happened"
+	* Events allow for concurrency and minimize coupling between objects
+	* Ideally, objects are only given the events that they need, and should never receive events they don't need
+	* The publish/subscribe protocol is one such way of handling this. It's actually quite elegant.
+	* These are referred to as "event services"
+	* The *model* is different from ways of *viewing* that model. Or at least, it should be.
+	* This is an incredibly powerful way of ensuring reversibility and modularity. I.e. don't put data handling in your UI code, but separate it and have your UI communicate the appropriate data. That way when your UI needs to change the underlying backend doesn't break.
+	* MVC stands for Model-View-Controller, and is a way of breaking data apart from the views that display or handle that data.
+	* *Debugging views* are one example of non-graphical data views that can be extremely helpful to the programmer.
+	* Listeners and event generators are synonyms for subscribers and publishers
+
+Tip 43 - Use Blackboards to Coordinate Workflow
+-----------------------------------------------------------
+	* I'm not gonna lie this seems like a terrible idea for what I want to do.
+	* For more complex project that requires a huge amount of communication between modules this seems like a much cooler idea.
+	* Blackboards can be organized in a hierarchical way or in a partitioned manner if they get too big.
+
+Tip 44 - Don't Program By Coincidence
+-----------------------------------------------------------
+	* It is INCREDIBLY dangerous to use a working program when you don't know why it's working.
+	* You are likely relying on unreliable corner cases or a bug in the system that might get fixed.
+	* DO NOT think "It works now, better leave well enough alone..."
+	* Assumptions can be the bane of your existence
+
+Tip 45 - Estimate the Order of Your Algorithms 
+-----------------------------------------------------------
+	* The author introduces 0(n) notation, which I am familiar with. It's basically neglecting the scaling factors and all the lower-order term, and only presenting the most dominant scaling term as n approaches infinity.
+	* Keep in mind that thrashing can be a thing, so watch out for this potentially happening.
+
+Tip 46 - Test Your Estimates
+-----------------------------------------------------------
+	* There's nothing quite like reality. Use it to test your estimates and your assumptions.
+	* High setup costs can often dwarf scaling (think the end of Moore's Law)
+	* Beware of premature optimization, it's dangerous and unnecessary.
+	
+
+Tip 47 - Refactor Early, Refactor Often
+-----------------------------------------------------------
+	* Make sure that you constantly refactor your code when you think it is getting ugly or something doesn't fit right. Don't feel bad about it, it's good programming practice.
+	* Rewriting, reworking, and re-architecting is collectively known as "refactoring"
+	* Again, documentation should be done as much as possible in the code itself.
+
+Tip 48 - Design to Test
+-----------------------------------------------------------
+	* Unit testing is a thing, make sure to do it on a per-module basis.
+	* Regression testing runs the tests and then compares them against the results of previous runs of the same test, to make sure you didn't break anything in this editing session. These should be run at the beginning of a coding session so you can make sure that you don't break anything.
+
+Tip 49 - Test Your Software, or Your Users Will
+-----------------------------------------------------------
+	* The software is getting tested at some point. But will you be the one doing it, or will it be found in a situation that you really don't want to happen?
+
+Tip 50 - Don't Use Wizard Code You Don't Understand 
+-----------------------------------------------------------
+	* I agree completely because I hate it when Wizards autogenerate a slew of complicated code and I have no idea what's going on.
+	* In contrast, when you do understand what's going on, wizards and code generators in general can be extremely valuable, and you should use them whenever possible.
+
+Tip 51 - Don't Gather Requirements, Dig for Them
+-----------------------------------------------------------
+	* A requirement is simply something that needs to be accomplished, not a specific feature that needs to be implemented. Keep them high level at first.
+	* Embed changable things as metadata as much as possible (DRY).
+	* Become a user of your software. What annoys you? This won't be an issue for me so much because the software I'm designing will be used almost entirely by me.
+
+Tip 52 - Work with a User to Think Like a User
+-----------------------------------------------------------
+	* The authors actually recommend physically working with a user as they do their thing, observing (making sure not to get in the way) and seeing how you can actually solve their problems, rather than meet their specifications.
+
+Tip 53 - Abstractions Live Longer Than Details
+-----------------------------------------------------------
+	* And plaintext lives longer than anything else. It will always be useful, and with unicode, it should always be around.
+
+Tip 54 - Use a Project Glossary
+-----------------------------------------------------------
+	* This is more relevant if you have hella terms that you need to worry about. Define them for other programmers and for yourself.
+
+Tip 55 - Don't Think Outside the Box, Find the Box
+-----------------------------------------------------------
+	* Intractable problems are only truly intractable if there's a theorem or a law of physics that says so. Even then, they are approximate-able.
+
+Tip 56 - Listen to Nagging Doubts - Start When You're Ready
+-----------------------------------------------------------
+	* Sometimes nagging doubts are there for a reason. Listen to them.
+	* Software development is still more of an art than a science.
+
+Tip 57 - Some Things are Better Done than Desribed
+-----------------------------------------------------------
+	* Can you explain in words how to tie a shoelace? Exactly. Some things are near-impossible to put in words but very easy to actually show.
+
+Tip 58 - Don't be a Slave to Formal Methods
+-----------------------------------------------------------
+	* Formal methods are nothing but a tool in your toolbox. Use them as appropriate, but don't worship them, and don't become a slave to them.
+
+
+CHAPTER 6 WHILE YOU ARE CODING
+=======================================
+
+Tip 59 - Expensive Tools Do Not Produce Better Designs
+-----------------------------------------------------------
+	* Formal methods have their place, but ultimately they are just another tool in your toolkit.
+	
+CHAPTER 8 Pragmatic Projects
+=======================================
+Tip 60 - Organize Around Functionality, Not Job Functions
+--------------------------------------------------------------
+	* Again, remember no broken windows. It's really difficult to maintain enthusiasm when you are placed on an un-enthusiastic team.
+	* Apparently it can be helpful to come up with an off-the-wall project name and use it for official communication and documentation. Giving a team an identity makes things memorable and more fun.
+	* Splitting teams functionally rather than by job role can be a much better way to organize things.
+
+Tip 61 - Don't Use Manual Processes
+--------------------------------------
+	* We want to ensure consistency and repeatability. Automation gives this to us.
+	* Omigod apparently there's this thing called cron that lets you run tasks periodically on UNIX machines
+	* This could be used to back up things over git for example every couple of minutes or every night although actually that's a terrible idea probably maybe?
+	* Apparently makefiles are used to compile projects. That's what they are for lol. See that would have been helpful to know this whole time.
+	* makefiles can also be used to run regression tests and to run various modules. Test an entire project with one command.
+	* A *build* is a procedure that takes an empty directory and builds the project from scratch, producing a final deliverable. 
+	* Apparently these kinds of builds are run automatically every night, that's why they are called "nightly bulids". Running these tests regularly is a very good idea.
+	* Documentation should be extracted from code as much as possible, and web content should be generated automatically with no human intervention required. DRY. Don't Repeat Yourself.
+	* The view from the web should be just that - a view.
+	* Let the computer to the repetitious whenever possible, and DRY. DRY. DRY.
+
+Tip 62 - Test Earl. Test Often. Test AUtomatically. 
+--------------------------------------------------------------
+	* We should want to find the bugs now so we don't have to endure the shame of them being found more publicly later.
+	* Tiny minnows have a nasty habit of becoming man-eating sharks pretty fast.
+	* According to these guys, the time and overhead it takes to produce the test code is worth the effort, and it can lead to a final product with zero defects.
+
+Tip 63 - Coding Ain't Done 'Til All the Tests Run
+-------------------------------------------------
+	* code is never really *done*, just like projects are never really *done*
+	* What to test: Unit tests, integration tests validation and verification, resource errors, performance, and usability.
+	* Unit tests are done on individual modules. They are easy to write and easy to execute, and should be written like immediately. In engineering this is equivalent to making sure all the subsystems work before you integrate them.
+	* Integration testing shows that the subsystems work together, and is fundamentally built on unit tests. Very similar, just the scope is different.
+	* I hate the idea of doctests, you make the code practically unreadable for very little benefit.
+	* Testing under real-world conditions is very important.
+
+Tip 64 - Use Sabateurs to Test Your Testing
+--------------------------------------------
+	* How do we test stuff? This tip and chapter goes over that.
+	* There are actual metrics that can be used to measure software complexity, that's nice.
+	* A regression test compares the output of the current test with previous or known values. This is a fantastic idea for consistency, to make sure the code you add doesn't break anything that was working yesterday (and then with source control you can easily revert to the build as it was yesterday if you can't identify the bug)
+	* In testing we need to use both real-world (typical) data as well as synthetic (corner case and other cases) data.
+	* Modular (unit) testing is a really good idea.
+	* Having a *project saboteur* can be both fun and valuable, try to have them intentionally break the program and make sure your tests will catch them. Source control makes this trivially easy.
+
+Tip 65 - Test State Coverage, Not Code Coverage
+-----------------------------------------------
+	* Making sure stuff executes properly is good, but it's actually your system states that count.
+	* Unfortunately testing more rigorously is literally an intractable problem.
+	* Start testing things as sood as the production code for it exists.
+	* It's important to run all tests regularly.
+
+Tip 66 - Find Bugs Once
+-------------------------
+	* Basically this prevents you from having to pay the startup cost of finding a bug more than once.
+	* Once you find a bug, it should be the last time you ever find that bug. Modify the tests and the code to remove it. No matter how trivial, no exceptions, and no matter how much you don't want to do it or think you can get away with it. It will happen again.
+
+Tip 67 - Treat English as Just Another Programming Language
+-----------------------------------------------------------
+	* Interesting - they seem to have skipped 3 tips.
+	* Pragmatic Programmers embrace documentation - make it a part of the process, that you actually refer to, not something you just tack on at the very end. Automate as much of it as possible so it's as painless as possible. 
+	* Treat code and documentation as two views of the same underlying model. Bash scripting and python will let you do this, learn them both well.
+
+Tip 68 - Bulid Documentation In, Don't Bolt It On
+-----------------------------------------------------
+	* This means both internal documentation and external documentation
+	* Too many comments can be as bad as too few - extremely low-level comments like "this loop does this" often aren't helpful. 
+	* Comments should discuss why something is being done, its purpose and its goal, not HOW it's being done. Commenting on the HOW is redundant, it violates the DRY principle.
+	* Simple module-level headers, comments for significant data and type declarations, and brief class and method headers describing how the function is used and any non-obvious functionality.
+	* Try to prevent the stroop effect by naming things after what they actually do.
+	* The great thing about using reST is that it can export your documents to HTML, LaTeX, or whatever else you want. I love it lol. Plaintext is great. Python can also deal with it quite easily.
+	* You should write as much of the documentation as possible in plaintext and then format it later. Word is a terrible idea.
+	* Print it or Weave it - Weave it.
+	* Keep documentation up on the web and have it auto-generated for you. Again, this is why getting familiarity with bash and vim and UNIX is so damn important. 
+	* Stylesheets can drastically lower the amount of shit you have to put in the actual document, perhaps we could use them even with reST? Yes, I think that should be a non-issue
+	* Translating between markup languages is easy, almost trivial. Use one (like reST) and just convert it into others as-needed, with style sheets if you like.
+	* Apparently writing comments for prototypes can also be a good idea because they often make it into the final product
+
+Tip 69 - Gently Exceed Your User's Expectations
+-----------------------------------------------
+	* You want to meet the *expectations* of your users and your boss, not their specifications necessarily.
+	* No matter how good the deliverable is, if it doesn't live up to *expectations*, by definition, it will not be perceived as good.
+	* This is sometimes referred to as *maanging expectations*
+	* Try to surprise your users or your boss or your project lead. Not scare, but delight. Make smaller promises than you know you can realistically deliver
+
+Tip 70 - Sign Your Work
+-----------------------
+	* Accept challenges and make your expertise well-known.
