@@ -1,0 +1,138 @@
+GIT COMMANDS
+	- git init: initializes an empty repository
+		- git init --bare prevents the use of a working directory
+
+	- git status: gives the status of the current repository, with all the untracked files, current branch, etc.
+
+	- git add: adds an untracked file to our git repository. REQUIRED to add new, untracked files
+		- git add folder: can be used to track folders
+		
+	- git commit: creates a new snapshot to be committed
+		- git commit -m "commit mesage": shortcut to prevent vim opening
+		- git commit -a: automatically include all tracked files in staged snapshot (careful not to include unintended files)
+		- git commit --amend: replaces the current commit (the one you have checked out) with a new one, allows you to rewrite history
+
+	- git log: view project commit history
+		- git log --oneline: a more terse view of commit history (only view messages and partial hashes)
+		- git loge filename: view revision history for a single file
+		- git log -n 4: View only the last 4 commits
+		- git log <repo1>..<repo2> --stat: shows the differences between two repositories or branches
+		
+	- git config --global user.name "<name>": configure your username
+		- git config --global user.email <email>: configure your email
+		- git config user.email <email>: configure local email only
+		- git config user.name <name>: configure local username only
+
+	- git checkout tag_name
+		- git checkout master: checks out the master branch and updates the files in your working directory accordingly
+		- git checkout branch_name: checks out a different branch
+		- git checkout branch_or_commit
+		- git checkout -b <branch_name>: creates a new branch and checks it out
+
+	- git tag -a tag_name: tags the current commit with an easily-identifiable tag name so you can check it out and see it more easily (rather than having to remember the 7-digit hash)
+
+	- git revert branch_name: undoes the effects of committing branch_name
+
+	- git reset: unstages all the added file changes, leaving contents alone
+		- git reset --hard: changes all tracked files to the most recent commit
+		- git reset --mixed HEAD~1 moves the checked out snapshot to a new commit and reset the commit immediately before the HEAD. --mixed preserves the working directory so we can modify the commit files
+		
+	- git clean -f: removes all untracked files
+
+	- git branch: shows all currently available branches
+		- git branch branch_name: creates a new branch 
+		- git branch -d branch_name: deletes a branch
+		- git branch -r: shows remote repositories
+
+	- git rm filename: stops tracking filename (and removes if necessary)
+
+	- git merge branch_name: merges branch_name into current branch (even if the repository is remote)
+
+	- git rebase branch_name: rebases the current branch onto branch_name
+		- git rebase -i <branch_name>: rebases the current branch to branch_name, and lets you add "pick", "edit", and "squash" commands to modify the commit history
+		- git rebase --continue: completes a rebase if you moved around wit h 'edit'
+		- git rebase --abort: aborts a rebase so you can try again
+	
+	- git reflog: shows git commands from the first commit to the repository
+	
+	- git clone <repo_to_clone> <new_repo_location>: clones a remote repository into a new one called new_repo_location
+
+	- git remote: lists all remote repositories your repository is based on
+		- git remote -v: shows all remote repositories
+		- git remote add <repo_name> <repo_path>: Adds a remote repository to the current repository (repo_name only needed if it's a bare repo)
+		- git remote rm <remote_name>: Removes a remote repository f rom the local one
+
+	- git fetch <repo_name>: fetches repository branches from a remote repository
+
+	- git push <<branch_name>> <repo_name>: pushes the current branch to remote repository and gives it to them as a *local* repository
+		- git push <repo_name> <tag_name>: pushes a tag to a remote repository
+
+
+INTRODUCTION
+	* Git is a distributed version control system, meaning everyone has a local copy of the project they can play with and upload changes at their leisure.
+	* Apparently Linus Torvalds was like "Go! We need a DVCS system for the linux kernal! Program my minions!" and so it was.
+	* the command line interface is still the most common way to interact with git.
+	* to actually start a git repository: use 'git init' in your desired folder
+		- this creates a .git folder in that parent folder, and this folder is the only thing special about git repositories. Deleting it will just make all the files plain old files again.
+	* an "untracked file" is one that is not under version control. We sometimes want this because we don't want for example binary files bloating the size of the repository when we only want to keep track of the source code.
+	* "snapshots" are what are determined by commits, and it represents the state of the project at a given point in time.
+	* creating snapshots is called "staging" in git because we can add or remove files before actually committing.
+	* creating snapshots is a two-step process, first with staging (adding and removing tracked files) and then with committing.
+	* committing files to the repository actually creates the local snapshot that we care about. Committed snapshots are "safe" versions of the project
+	* git uses hashing to make sure that repositories don't get corrupted, and stores each commit with a unique hash
+	* git actually allows you to configure different usernames for different repositories, which is cool
+	* you can pass more than one file to git add
+	* the fundamental git workflow is edit files -> add them (staging a commit) -> commit them (creating a snapshot of the current project)
+
+CHAPTER 2 UNDOING CHANGES
+	* after using commits to create snapshots of our project, we want to be able to revert to a previous state without destroying anything.
+	* in git, things are saved in 'branches'
+	* if you haven't committed changes, then you can't revert to a previous version
+	* git reset and git clean both operate on the working directory, and permanently change things
+
+CHAPTER 3 BRANCHES PART 1
+	* branches are independent lines of development
+	* master branch is default, asterisk means currently checked out
+
+CHAPTER 4 BRANCHES PART 2
+	* 'topic branches' are branches off master used to develop specific features, and after they are finished they are deleted
+	* 'feature branches' are longer-running branches used to develop features
+	* merging branches with diverging history requires an extra commit, and is referred to as a 3-way merge
+	* 'hotfix branches' are temporary branches off master that interrupt current work but that's ok b/c git is awesome
+	* fast-forward merges are actually not reflected in project history, only the commits that make it up. On the other hand, 3-way commits are.
+
+CHAPTER 5 REBASING
+	* Rebasing seems extremely useful when you don't want to break the build but you want to see how your code will interact with the old code. It seems like what it does is identical to a merge except for the revision history
+	* Rebasing allows you to interactively minimize the number of commits from a single branch to a single commit. But this doesn't seem necessary* to use the tool.
+	* Amending commits can be useful for hitting the "redo" button on commits without having to add unnecessary complexity.
+	* Rebasing is cool because it makes everything look like a linear history, even though that wasn't the case at all.
+
+CHAPTER 6 REWRITING HISTORY
+	* In general you want to commit a snapshot for each significant addition to the project
+	* Don't commit a snapshot if you can't come up with a single specific message for it
+	* After doing a reset --hard and moving to a previous commit you have a "dangling commit", which is in danger of being lost forever
+	* detached HEAD states happen anytime you are not on the tip of a branch and you decided to check out a prior commit
+	* Tips of a branch in git actually represent the *entire* branch
+
+CHAPTER 7 REMOTES
+	* A remote repository is one that is not your own (or at least one that is not your current local repository)
+	* Git clone doesn't just work on remote repositories, it works on ANY repository, even local ones!
+	* Apparently your email doesn't actually need to be a valid email unless you want permission to do remote shennanigans
+	* local configurations override global configurations locally without changing them globally, it's great.
+	* Committs automatically append author information which is really nice
+	* Cloning the repository creates a fully independent one, not a branch.
+	* 'origin' is a pointer to the repository that you cloned from, on the assumption you might want to interact with it at some point.
+	* 'master' is by convention the stable branch, and so all remote fetches and merges should be done on that.
+	* 'fetch' and 'push' are *almost* opposites, except that push causes the pushed repository to show up as a local repository, and fetch causes it to show up as a remote repository
+	* in generel it's kind rude just to push into someone else's repository LOL
+	* You need to push tags to remote repositories manually if you create them after they clone the repository
+	* in general different repositories are for different people (and projects). Different repositories should NOT be used to manage project features, that defeats the whole purpose of version control.
+	* Distributed version control is complicated because it's basically a directed graph and you are expected to understand wtf is going on.
+
+CHAPTER 8 CENTRALIZED WORKFLOWS
+	* oh thank god, the nasty-ass directed graph gets simplified into a central one, which presumably is hosted on github.
+	* repositories (even central ones) can actually live wherever you want.
+	* using .git extension on directory is convention denoting that it is a bare git repository (no working directory, only a storage place)
+	* 'publishing' refers to the act of pushing your local branch to the remote central repository
+	* git can use repositories on other computers by using ssh
+	* git push accomplishes the same thing as going to the central repository, performing a fetch, and then performing a merge
