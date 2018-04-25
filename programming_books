@@ -6,19 +6,25 @@ BOOK ACHIEVEMENTS:
 	* I understand the very basics of reST documentation and have plans to use it once I finish reading my python books.
 	* I understand and agree with the principles of Tracer Bullets, DRY, Prototyping and Post-It Notes, Orthogonality, and Ruthless Testing.
 
+WHAT CONSTITUTES SUCCESS:
+==========================
+	* I have a solid enough understanding to automate almost any repetitive task with a combination of python and the bash shell
+	* I can visualize and manipulate data with python
+For these reasons, it is probably only necessary to read one book on the UNIX shell, and python can be used to take care of the rest in conjunction with git/vim. Only one book on the shell is necessary, and might even be overkill.
+
 COMPLETED BOOKS:
 ----------------------
 	* (h) 04/11/2018-04/14/2018: A Smarter Way to Learn Python 
 	* (h) 04/15/2018-04/20/2018: Python Tricks: A Buffet of Awesome Features
 	* (h) 04/21-2018-04/22/2018: Ry's Git Tutorial
-	* (h) The Pragmatic Programmer from Journeyman to Master - Amazon
+	* (h) 04/21-2018-04/23/2018: The Pragmatic Programmer from Journeyman to Master - Amazon
 
 CURRENT BOOKS:
 ----------------------
 	* (h) 04/15/2018-PRESENT: Practical Vim, 2nd Edition
 	* (h) 04/16/2018-PRESENT: Python Data Analysis Handbook
 	* (h) 04/19/2018-PRESENT: Fluent Python
-	* (h) Unix Shell Programming (3rd Edition) - Amazon
+	* (h) 04/23/2018-PRESENT: The Linux Command Line: A Complete Introduction
 
 FUTURE BOOKS:
 ----------------------

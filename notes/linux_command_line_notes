@@ -1,0 +1,95 @@
+USEFUL WILDCARDS
+* Matches any characters
+? Matches any single character
+[characters] Matches any character that is a member of the set characters
+[!characters] Matches any character that is not a member of the set characters
+	[:alnum:] Alphanumeric characters
+	[:alpha:] Alphabetic characters
+	[:digit:] Numerals
+	[:lower:] Matches any lowercase letter
+	[:upper:] Matches any uppercase letter
+
+	for example [[:alnum:]] matches any alphanumeric character
+
+
+USEFUL COMMANDS
+command -options --other-options arguments
+	date - prints the current date
+	cal - prints the calendar for the current month
+	df - displays free space available on disk drives
+	free - displays the amount of free memory
+	exit - quits the shell and closes the emulator program
+	cd - - yes include the extra dash. Moves to the previous working directory.
+	file - Determine file type (ASCII text, UTF-8 text, etc.)
+	less - view file contents. I prefer vim -M to open vim in readonly mode.
+	cp files dir - copy files 
+		-a archive: copy the permissions and ownership of files as well
+		-i interactive: prompt before overwriting a file
+		-r recursive: obv.
+		-u update: only copy files that are newer or don't exist to the new location
+		-v verbose: be explicit about what's happening
+	mv files path - moves files or directories to the desired location
+		-i interactive:
+		-u update
+		-v verbose
+	rm files - deletes the selected files
+		-i interactive: see a common theme here?
+		-r recursive: delete all subdirectories recursively
+		-f force: don't bitch at me. Just fucking do it.
+		-v verbose: and give me a comprehensive report while you're at it.
+	ls dir1 dir2 - apparently ls can list the contents of multiple directories at once
+		-l long output (file size, date modified, permissions
+		-a show hidden files
+		-t sort the result by time modified
+		--reverse reverses the order
+		-S sort by file size (might be useful sometimes)
+	ln - create symbolic and hard links
+	cmd
+
+
+CHAPTER 1 INTRODUCTION
+==========================
+	* GUIs make easy tasks easy, and command lines make difficult tasks possible.
+
+CHAPTER 2 - WHAT IS THE SHELL?
+==================================
+	* The command line is actually referring to the *shell*, a program that takes keyboard commands and passes them to the operating system to carry out. Most Linux distros use bash.
+
+CHAPTER 3 - NAVIGATION 
+=========================
+	* directories are ordered in a hierachical structure as in windows
+	* unlike windows, storage devices are mounted after the root directory, not in parallel with it.
+	* this book is really cool because it's styled like a tutorial and is very linear - that might help to explain its rather absurd popularity. Excellent pedagogy.
+	* by default the home directory is the only directory the user is allowed to write files
+	* Most of the system's programs are installed in /usr/bin
+	* Linux has no concept of file extensions (or not really). You can name files however you like. However, some programs do actually use file extensions.
+
+CHAPTER 4 - EXPLORING THE SYSTEM
+===================================
+	* Apparently ls can list the contents of more than one directory. That's pretty damn cool.
+	* commands are specified with options and arguments
+	* 'long options' are specified with --double-dashes and are verbose, 'short options' are specified by a single character and a single dash such as -a. Short options can be combined together like ls -la
+	* in the access rights field, a dash means a normal file and a d means a directory.
+	* A common idea in unix operating systems is that "everything is a file"
+	* Plain text generally refers to ASCII text.
+	* 'less' is actually a program, or a command line utility used to view text. I think opening vim in read-only mode would be better
+	* In Linux, there are no secrets. It's kind of a beautiful idea if I'm being honest. I hope it gains more traction in the future.
+	* /bin mostly contains system binaries 
+	* /boot contains the linux kernel
+	* /dev contains *device nodes*, or all the devices that are plugged into the system. Everything is a file, remember.
+	* /etc contains all the system-wide configuration files, and a collection of startup shell scripts.
+	* /media is generally used for mounting devices on newer linux systems, while /mnt is used on older ones.
+	* /sbin contains system binaries that perform vital tasks.
+	* /usr contains all the programs and support files used by regular users, and largely mirrors the root directory.
+	* programs compiled from source and installed after the fact are generally located in /usr/local/bin/
+	* symbolic link is synonymous with soft link
+	* symbolic links are used heavily for referencing software that needs to be updated and versioned
+
+CHAPTER 5 - MANIPULATING FILES AND DIRECTORIES
+================================================
+	* avoid using [a-z] but instead just use [:lower:]. Same with [A-Z] and [:upper:]
+	* apparently wildcards work in the GUI
+	* 'nautilus' is the file manager for GNOME
+	* mkdir can create multiple directories at once
+	* cp can actually be used to copy multiple files at once into a directory. This is different than the typical functionality you are accustomed to.
+	* Be careful with rm. Once you delete a file, it's gone forever (unless you were using source control! hahahaha)
