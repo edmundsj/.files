@@ -14,6 +14,7 @@ h - move to the left (right index finger)
 t - move down (right middle finger)
 n - move to the right (right ring finger)
 c - move up (right middle finger moves up)
+$ - move to the end of the current line
 
 
 Mappings I am trying to learn
@@ -25,7 +26,6 @@ b - move to beginning of word
 e - move to the end of a word (forms a pair with b)
 
 ^ - move to the beginning of the current line
-$ - move to the end of the current line
 
 f<char> - moves the cursor to the next occurance of character <char>
 
@@ -79,11 +79,55 @@ gu	- make lowercase
 
 Tip: Repeating an operator twice performs the action on the current line. So to capitalize a line you would type gUgU. You can also create your own operators, which could let you comment out lines or blocks of code :DDD
 
-		-- ADDITIONAL COOL STUFF --
+COMMAND LINE MODE
+====================
 
+:5					- moves cursor to line number 5
+:$					- moves cursor to end of file
+:p					- print the current line
+:3p					- print the third line
+:2,5d				- deletes lines 2 to 5
+:/word1/,/word2/:	- runs a command on the range specified by word1 and word2
+:/w1/+1,/w1/-1		- runs a command on the range with an offset for each.
+:%d					- deletes all lines
+:[range]t{address}	- copies a set of lines to a new set of lines
+:[range]m{address}	- moves lines in range to address
+:[range]normal cmd	- execute normal mode commands on a range of lines (oh baby)
 :sp filename 		- Splits the VIM window horizontally
 :vs filename 		- Splits the VIM window vertically
 :source ~/.vimrc 	- Updates the vimrc without closing vim
 :digraph			- pulls up list of available digraphs
 
 
+PRACTICAL VIM NOTES
+========================
+
+CHAPTER 5 COMMAND-LINE MODE
+=============================
+	* vi actually was derived from a text editor called "ex", and vim still retains its command-line mode.
+	* ohhhh after you type : you are in command-line mode. Well that's easy, and that makes sense.
+	* commands typed in command-line mode are called "ex commands"
+	* We also enter command-line mode when we start the line with / to form a search expression
+	* We can use it to do pattern and string matching, too, and that's how we read and write files, create new split windows, and interact with the "buffer"
+	* It seems like ex commands are what you use in your vimrc to do programming and conditional replacement and shit.
+	* Yup, this is what the nnoremap command actually is. It's an ex command.
+	* ex commands can sometimes be faster than regular vim commands, and they can be executed across many lines at once.
+	* Ranges take the form {start},{end} where the things in brackets are replaced with numbers and don't actually use brackets.
+	* % has a special meaning: all lines in the current file, that's where %s comes from. % is just a range.
+	* You can use visual mode to make a selection that ex commands can operate on. That's pretty neat.
+	* I agree command mode is wonderfully powerful, but I'm not sure how much use I will be getting out of it. However, there is a relatively small set of powerful operators I would like to remember, including $, 0, 1
+	* :t command is generally move efficient when copying a line to another destination
+	* {} is for non-optional arguments and [] is for optional arguments in general. Neat.
+
+Tip 30 - Run Normal Mode Commands Across a Range
+--------------------------------------------------
+	* Also the pragmatic programmer suggested I get really good at using vim, python, and python's plotting tools if nothing else, so this is a good idea if I am going to be doing any amount of programming. I can learn slowly, that's fine.
+	* oh baby. Ohhhh oh baby. I really like ex mode now. Executing normal mode commands on a range of lines is fucking awesome
+	* vim commands synergize with each other absurdly well
+	* Combined with vim's . repeat command it's absurdly powerful. 
+	* Wow that's really fucking nice. I can't believe I didn't know this.
+	* If you want to know how to do this in visual mode, see page 50.
+Tip 31 - Repeat the last Ex Command
+-----------------------------------
+	* @: can be used to repeat the last ex command
+	* I'd really rather not mess with this at the moment cause there's no easy way to undo things.

@@ -43,8 +43,22 @@ command -options --other-options arguments
 		-t sort the result by time modified
 		--reverse reverses the order
 		-S sort by file size (might be useful sometimes)
+		-i show inode (unique memory address of each file)
 	ln - create symbolic and hard links
+	type - display the command's type that is about to be used
+	which - displays the location of an executable.
+	help - gives help for a shell builtin (there are only a few of these, such as cd)
+	--help - running about any command with this directive will give options and use examples
+	man - gives the manual of the executable you want to know about
+		-k searches the entire set of manuals by search term
+	info - similar to man, but also hyperlinked and provided from the GNU project
+	whatis - gives an extremely brief description of the command
+	alias - generates a new command out of a command sequence. For example, alias foo='cd /usr; ls;'
+		- also with no arguments lists all the current system aliases.
+	unalias - un-aliases a command created with alias
+	sort - sorts plain text by alphanumeric order
 	cmd
+
 
 
 CHAPTER 1 INTRODUCTION
@@ -93,3 +107,51 @@ CHAPTER 5 - MANIPULATING FILES AND DIRECTORIES
 	* mkdir can create multiple directories at once
 	* cp can actually be used to copy multiple files at once into a directory. This is different than the typical functionality you are accustomed to.
 	* Be careful with rm. Once you delete a file, it's gone forever (unless you were using source control! hahahaha)
+	* accidentally typing rm * will delete all the files in the current directory.
+	* Unix has the concept of hard links and symbolic links. Hard links cannot reference directories, and cannot reference files outside our current filesystem.
+	* Hard links are indistinguishable from the file itself, it's a clone of the file. You can modify any of the hard links and they will all be updated.
+	* Symbolic links are basically the same thing as windows shortcuts. Broken symbolic links are displayed in red with ls
+	* Symbolic links will actually fuck up if you have two hard links in different locations of the same filename. They will be assigned to the one that's in the current directory lol.
+	* Symbolic links can be made with absolute or relative pathnames, and these are maintained as the directories are moved around (so relative pathnames tend to be more robust, and they are *actually* different
+	* File operations on the link are generally carried out on the underlying file itself.
+
+CHAPTER 6 - WORKING WITH COMMANDS
+===================================
+	* What is a command really? Well, apparently it can be different things. Some are executable programs, or binaries. Some are commands built into the shell itself called "shell builtins". Some are shell functions, or miniature scripts, and some are aliases. We can figure out which is which.
+	* type displays the command type 
+	* which displays an executable's location
+	* The 'which' command exists both to find location and to figure out which executable is actually being executed, because on large systems there may be more than one.
+	* Square brackets indicate optional items, and vertical bars indicated mutually exclusive items.
+	* Formal documentation for programs is contained in the "man" page of the program, and can be accessed with the "man" command.
+	* Man pages generally contain a title, synopsis, description, and the options available. They generally don't include examples and are not intended as a tutorial, but a reference.
+	* You can display a nextremely terse explanation of a command with "whatis"
+	* We can create our own commands using 'alias'
+	* commands can be separated on the same line with semicolons like so:
+		command1; command2; command3; ...
+	* alias foo='command text' can generate a new command with the name foo
+	
+CHAPTER 7 - REDIRECTION
+==========================
+	* I/O redirection is probably the coolest feature of the command line, and only poorly understood by myself.
+	* the 'standard output' or *stdout* is actually considered a file, albiet a special one. The status messages go to another file called *standard error* or *stderr*. By default these are both sent to the screen and not to an actual file.
+	* standard input, or *stdin* is by default attached to the keyboard
+	* Apparently we can redirect the input, output, and error as we wish.
+	* Redirecting standard output can be done using ">", or the redirection operator
+	* Error messages are not sent to the standard output, they are sent to the standard error.
+	* The redirection operator > always overwrites the file in question from the beginning
+	* > test_file can actually just overwrite test_file with nothing, which is cool.
+	* The >> redirection operator appends to a file instead of overwriting it from the beginning
+	* Standard error is file descriptor number 2 using 2>
+	* you can redirect both standard error and standard output using > file 2> err_file after the command
+	* Redirecting both standard error and standard output to a single file you use &>. Otherwise you need to do > filename 2>&1
+	* we can silence a command by redirecting the standard error to the "null file", which serves as a black hole for bits. just 2> /dev/null
+	* /dev/null is called a "bit bucket" because it's literally just a bucket that holds bits.
+	* cat reads a file and sends it to the standard output
+	* this command is typically used for short source files (for obvious reasons)
+	* it can be used on non-text file types as well, which can then be redirected to new files. 
+	* if cat is not given any arguments, it reads from the standard input.
+	* Ctrl-D gives an end-of-file signal to bash utilities
+	* cat can basically be used as the world's dumbest word processor.
+	* cat < filename is the same as cat filename, and it redirects the standard input to the filename
+	* the pipe operator | sends standard output of one command to the standard input of the next command
+
