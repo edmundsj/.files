@@ -14,6 +14,15 @@ USEFUL WILDCARDS
 
 USEFUL COMMANDS
 command -options --other-options arguments
+	!15 - executes the command at history position 15 (the 15th command executed)
+	Ctrl-k - cuts the line from the cursor to end of line
+	Ctrl-y - pastes the line in the "kill ring"
+	Ctrl-a - jump to beginning of line
+	Ctrl-e - jump to end of line
+	Ctrl-r - interactive reverse history search (kinda cool but pretty unnecessary)
+		Ctrl-j - copy the command and paste it into the shell
+	Anything more complicated than that - use vim
+
 	date - prints the current date
 	cal - prints the calendar for the current month
 	df - displays free space available on disk drives
@@ -57,6 +66,27 @@ command -options --other-options arguments
 		- also with no arguments lists all the current system aliases.
 	unalias - un-aliases a command created with alias
 	sort - sorts plain text by alphanumeric order
+	uniq - removes duplicates from a list
+		-d shows only the duplicates
+	wc - prints word count, line count, and character (byte) count of a file
+		-l only report lines
+	grep - grep pattern [file] prints the lines containing the pattern
+		-i ignore case
+		-v only print lines that do not match the pattern
+	head/tail - these two commands print the top/bottom 10 lines
+		-n 15 prints the top/bottom 15 lines
+		-f monitors the file for changes and prints the new changes (very useful for installing shit)
+	tee filename - OMG this lets us pipe standard output both to the command line and to a file. That's so nice.
+	{} - Brace expansion echo {a,b,c} gives "a b c" (no whitespace allowed)
+		{1..5} and {A..Z} expand as you would expect
+	script - records the command session to a file
+	chmod - change file permissions
+	umask - show default bit masking of permissions to be removed
+	su - login as a different user
+		su jordan - login as jordan
+		-l login and load that user's directory and shit.
+	chown - changes the owner and group of a file
+		chown bob:admins changes the owner to bob and the group to admins (one of bob's groups)
 	cmd
 
 
@@ -154,4 +184,76 @@ CHAPTER 7 - REDIRECTION
 	* cat can basically be used as the world's dumbest word processor.
 	* cat < filename is the same as cat filename, and it redirects the standard input to the filename
 	* the pipe operator | sends standard output of one command to the standard input of the next command
+	* The pipe operator is used specifically for *commands*, not files
+	* There's clearly a difference between pipes and redirection operators
+	Filters 
+	-----------
+		* ls /bin /usr/bin | sort - this is considered a "filter" because it takes the output of one command and filters it into a specified order.
+	Uniq 
+	----------
+		* removes duplicates from a list
+	Grep
+	--------
+		* ohhh baby here we go.
+		* grep is a *program*
+		* oh cool this book teaches regular expressions!
 
+CHAPTER 8 SEEING THE WORLD AS THE SHELL SEES IT
+===============================================
+	* What *actually* happens when you push a key on the command line?
+	* The shell performs "expansion" on things like wildcards before executing
+	* By default the wildcard does not expand to include hidden files
+	* The Tilde ~ is expanded to the home directory
+	* You can also say ~username to go to the same place, so ~jordan is the same as ~
+	* LOL the shell can do (integer) arithmetic. That's annoying.
+	* "Brace expansion" is a thing that lets you create a few text strings (although I'm not sure how important this is given I can call python from the shell)
+	* They are rly weird but you can nest them so it's coo.
+	* Brace expansions are super duper useful for file and directory creation
+	* They can be put in any expression which is pretty fawkin nice.
+	* There's this thing called "parameter expansion", where parameters appear to be variables the shell has access to and they seem to all start with a $ sign
+	* Command substitution is pretty fcking weird.
+	* Quoting can be used for echo and apparently for other commands too.
+	* Inside double quotes, all shell special characters lose their meaning (except a few). So the wildcard no longer works for example.
+	* ahhhhh double quotes are how we deal with filenames that have a space.
+	* By default the shell uses tabs, newlines, and spaces as *delimeters*, not as actual information
+	* Single quotes suppress *all* expansions
+	* The backslash is the "escape character", and serves the same purpose as quotation in the shell. That's neat. And it makes things make so much more sense.
+	* The escape character originated in C and was adopted by the shell and now basically every language I know. Yay ^^.
+	* Good, this book will actually use the concepts
+
+CHAPTER 9 - ADVANCED KEYBOARD TRICKS
+=======================================
+	* What, other than Ctrl-D and Ctrl-C? 
+	* Well, Ctrl-a moves to the beginning of line, and Ctrl-e to the end of line. Ctrl-f moves forward one word and Ctrl-b moves backward one word.
+	* I don't think most of these are necessary and I'll remap them to vim shortcuts.
+	* Cutting and pasting is a much more violent "killing and yanking" with Ctrl-k and Ctrl-y
+	* The shell features completion, which I already know
+	* I use tab completion so much it's not even funny.
+
+CHAPTER 9 - PERMISSIONS
+========================
+	* Ah yes, not being able to execute a file. Don't you just love that?
+	* Permissions are from the days when multiple users used a single computer. Except on servers that's now a little dated.
+	* users may "own" files and directories, and the owner has complete control over its access. Users can also belong to a *group* that have access determined to directories and files by their owners.
+	* "The world" is the unix term for "everybody" in terms of permissions
+	* The file attributes are the 10 characters to the left when executing ls -l
+		* - means regular file 
+		* l means symbolic link
+		* d means directory
+	* Permissions in the file attributes go like -owner- -group- -world-
+	* chmod can actually use octal numbers to set file permissions. So chmod 777 my_file gives rwx permissions to everyone
+		* 600 gives rw permissions only to the owner
+		* 755 gives rwx permissions to the owner and rx permissions to everyone else. 
+		* x has a value of 1, w has a value of 2, and r has a value of 4.
+		* octal notation is sufficient for chmod, no need to memorize anything more.
+		* a recursive chmod acts on files and directories
+	* umask shows the default bitmask to remove from file permissions (typically 0002, meaning that everyone can't write to the file)
+		* this doesn't typically need to be controlled, but if you need more security it may be important.
+	* There is actually a fourth digit for file permissions that can be used (in octal notation if you wish) that sets the *effective permissions* for anyone using that file. Neat. So basically we can make people the superuser that aren't actually the superuser, if the superuser set those permissions and created that file.
+	* 'su' can actually be used to change to *any* user, not just the superuser
+		* su stands for substitute user, and can also be used to execute a single command
+	* 'sudo' can also be used to execute commands from users that are not the superuser.
+		* it's neat because users can be added to a sudoers file and only need their password to execute commands that require the privileges of other users.
+	* apparently giving superuser privileges only when needed makes linux inherently more secure than Windows, because the programs a user installs don't have administrator privileges by default.
+	* you can change the owner and group of a file if you so desire
+	* I don't think I'm ever going to be much bothered with multiple users, if I do I'll pick this book up again.

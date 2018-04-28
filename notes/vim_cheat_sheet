@@ -131,3 +131,9 @@ Tip 31 - Repeat the last Ex Command
 -----------------------------------
 	* @: can be used to repeat the last ex command
 	* I'd really rather not mess with this at the moment cause there's no easy way to undo things.
+
+Tip 32 - Tab-Complete Your Ex Commands
+---------------------------------------
+	* oh really? That would be hella nice.
+	* Press <Ctrl-d> to see what options you have available for an ex command
+	* Press tab to autocomplete the command and to cycle through the various options.
