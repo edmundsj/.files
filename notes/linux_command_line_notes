@@ -15,6 +15,8 @@ USEFUL WILDCARDS
 USEFUL COMMANDS
 command -options --other-options arguments
 	!15 - executes the command at history position 15 (the 15th command executed)
+	Ctrl-c - interrupts a running process
+	Ctrl-z - pauses (stops) a running process
 	Ctrl-k - cuts the line from the cursor to end of line
 	Ctrl-y - pastes the line in the "kill ring"
 	Ctrl-a - jump to beginning of line
@@ -22,7 +24,7 @@ command -options --other-options arguments
 	Ctrl-r - interactive reverse history search (kinda cool but pretty unnecessary)
 		Ctrl-j - copy the command and paste it into the shell
 	Anything more complicated than that - use vim
-
+	
 	date - prints the current date
 	cal - prints the calendar for the current month
 	df - displays free space available on disk drives
@@ -87,20 +89,38 @@ command -options --other-options arguments
 		-l login and load that user's directory and shit.
 	chown - changes the owner and group of a file
 		chown bob:admins changes the owner to bob and the group to admins (one of bob's groups)
+	passwd - change a users password
+		[user] the optional user whose password we want to change
+	ps - view running processes
+		-x shows all processes
+		-aux shows all processes that have ever run along with much more information
+	top - view running process that are taking up the most of the CPU
+	jobs - view the running jobs
+	fg - move a job to the foreground
+		%1 - move the 1st job to the foreground
+	bg - moves a job to the background
+		%1 moves the 1st job the background
+	kill - kills a process of a specified number
+		%1 kills the process with jobspec 1
+		95 kills the process with PID 95
+		-KILL actually kills the process, not nicely (sent to kernel directly). Use as a last resort
+		-TERM asks the process to kill itself nicely. This is the default signal.
+		-STOP suspends the process (sent to kernel)
+		-l lists all the available signals
 	cmd
 
 
 
 CHAPTER 1 INTRODUCTION
-==========================
+------------------------------------------
 	* GUIs make easy tasks easy, and command lines make difficult tasks possible.
 
 CHAPTER 2 - WHAT IS THE SHELL?
-==================================
+------------------------------------------
 	* The command line is actually referring to the *shell*, a program that takes keyboard commands and passes them to the operating system to carry out. Most Linux distros use bash.
 
 CHAPTER 3 - NAVIGATION 
-=========================
+------------------------------------------
 	* directories are ordered in a hierachical structure as in windows
 	* unlike windows, storage devices are mounted after the root directory, not in parallel with it.
 	* this book is really cool because it's styled like a tutorial and is very linear - that might help to explain its rather absurd popularity. Excellent pedagogy.
@@ -109,7 +129,7 @@ CHAPTER 3 - NAVIGATION
 	* Linux has no concept of file extensions (or not really). You can name files however you like. However, some programs do actually use file extensions.
 
 CHAPTER 4 - EXPLORING THE SYSTEM
-===================================
+------------------------------------------
 	* Apparently ls can list the contents of more than one directory. That's pretty damn cool.
 	* commands are specified with options and arguments
 	* 'long options' are specified with --double-dashes and are verbose, 'short options' are specified by a single character and a single dash such as -a. Short options can be combined together like ls -la
@@ -130,7 +150,7 @@ CHAPTER 4 - EXPLORING THE SYSTEM
 	* symbolic links are used heavily for referencing software that needs to be updated and versioned
 
 CHAPTER 5 - MANIPULATING FILES AND DIRECTORIES
-================================================
+------------------------------------------
 	* avoid using [a-z] but instead just use [:lower:]. Same with [A-Z] and [:upper:]
 	* apparently wildcards work in the GUI
 	* 'nautilus' is the file manager for GNOME
@@ -146,7 +166,7 @@ CHAPTER 5 - MANIPULATING FILES AND DIRECTORIES
 	* File operations on the link are generally carried out on the underlying file itself.
 
 CHAPTER 6 - WORKING WITH COMMANDS
-===================================
+------------------------------------------
 	* What is a command really? Well, apparently it can be different things. Some are executable programs, or binaries. Some are commands built into the shell itself called "shell builtins". Some are shell functions, or miniature scripts, and some are aliases. We can figure out which is which.
 	* type displays the command type 
 	* which displays an executable's location
@@ -161,7 +181,7 @@ CHAPTER 6 - WORKING WITH COMMANDS
 	* alias foo='command text' can generate a new command with the name foo
 	
 CHAPTER 7 - REDIRECTION
-==========================
+------------------------------------------
 	* I/O redirection is probably the coolest feature of the command line, and only poorly understood by myself.
 	* the 'standard output' or *stdout* is actually considered a file, albiet a special one. The status messages go to another file called *standard error* or *stderr*. By default these are both sent to the screen and not to an actual file.
 	* standard input, or *stdin* is by default attached to the keyboard
@@ -199,7 +219,7 @@ CHAPTER 7 - REDIRECTION
 		* oh cool this book teaches regular expressions!
 
 CHAPTER 8 SEEING THE WORLD AS THE SHELL SEES IT
-===============================================
+------------------------------------------
 	* What *actually* happens when you push a key on the command line?
 	* The shell performs "expansion" on things like wildcards before executing
 	* By default the wildcard does not expand to include hidden files
@@ -222,7 +242,7 @@ CHAPTER 8 SEEING THE WORLD AS THE SHELL SEES IT
 	* Good, this book will actually use the concepts
 
 CHAPTER 9 - ADVANCED KEYBOARD TRICKS
-=======================================
+------------------------------------------
 	* What, other than Ctrl-D and Ctrl-C? 
 	* Well, Ctrl-a moves to the beginning of line, and Ctrl-e to the end of line. Ctrl-f moves forward one word and Ctrl-b moves backward one word.
 	* I don't think most of these are necessary and I'll remap them to vim shortcuts.
@@ -231,7 +251,7 @@ CHAPTER 9 - ADVANCED KEYBOARD TRICKS
 	* I use tab completion so much it's not even funny.
 
 CHAPTER 9 - PERMISSIONS
-========================
+------------------------------------------
 	* Ah yes, not being able to execute a file. Don't you just love that?
 	* Permissions are from the days when multiple users used a single computer. Except on servers that's now a little dated.
 	* users may "own" files and directories, and the owner has complete control over its access. Users can also belong to a *group* that have access determined to directories and files by their owners.
@@ -257,3 +277,43 @@ CHAPTER 9 - PERMISSIONS
 	* apparently giving superuser privileges only when needed makes linux inherently more secure than Windows, because the programs a user installs don't have administrator privileges by default.
 	* you can change the owner and group of a file if you so desire
 	* I don't think I'm ever going to be much bothered with multiple users, if I do I'll pick this book up again.
+	* we can change someone's password with the 'passwd' command. 
+
+CHAPTER 11 - PROCESSES
+------------------------------------------
+	* Processes are how computers give the illusion that they are multitasking
+	* daemons are programs that sit in the background and do their thing without a UI
+	* on system start up, the kernel launches a program called *init* in addition to its own processes.
+	* programs that launch other programs are *parent* processes, while the programs they launch are their *child process*
+	* each process has a number, or process ID, which are assigned in ascending order.
+	* processes have owners and user IDs associated with them, just like files
+	* processes can (naturally) be viewed from the command line
+	* "tty" is short for teletype and refers to the controlling terminal for the process.
+	* "stat" is the state the process is in. Capital S is for sleeping. It's waiting for an event to happen, such as a keystroke
+		* R is for running
+	* the process with PID 1 is the init process
+	* the X window system is the UI engine of linux.
+	* Ctrl-c interrupts a running program
+		* apparently not all processes can be interrupted this way 0.0
+	* There is apparently a distinction between *jobs* and *processes*
+	* It seems like 'jobs' keeps track of the jobs the user actually started from the terminal
+	* Moving a process from the foreground to the background with Ctrl-z -> bg is quite useful if you forget to run it with & and you want access to your shell again without killing the program.
+	* You can kill a process with 'kill' command 
+		* Although technically this doesn't actually kill the process, it just asks the process nicely to shut itself down by sending it a *signal*
+		* Ctrl-c and Ctrl-z are actually themselves *signals*
+		* Makes sense that not all processes can be killed with Ctrl-C because not all processes are actively listening for the INT signal
+		* you can, however, choose to actually kill the program by specifying the signal KILL
+		* programs can choose to ignore signals, but not KILL. This is never actually sent to the program, but to the kernel. Should only be used as a last resort, as it doesn't give the process a chance to clean up after itself, removing .swp files and whatnot.
+	* you must be the owner of a process or the superuser to kill it.
+
+PART 3 CONFIGURATION AND THE ENVIRONMENT
+===========================================
+
+CHAPTER 12 - THE ENVIRONMENT
+--------------------------------
+	* The shell maintains a body of information during its session called the "environment"
+	* The 'environment' basically just contains all your variables, aliases, and shell functions.
+	* on login (and on a shell startin) it reads a set of configuration scripts called startup files.
+	* there are different startup files for logging in versus starting a terminal from the UI
+	* the ~/.bashrc is the most important startup file, just like the ~/.vimrc
+	* most login shells also read from the user's bashrc file
