@@ -1,0 +1,5 @@
+[abc] 	matches only a single character, a, b, or c
+.		the wildcard metacharacter, matches any single character
+\d		the digit metacharacter, matches any single digit 0-9
+[^abc]	excludes the characters a, b, and c from a single-character match (matches anything that doesn't contain this character in the given position)
+[0-6]	matches any of the numbers 0 through 6
