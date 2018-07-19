@@ -3,7 +3,7 @@ BOOK ACHIEVEMENTS:
 	* I feel much more comfortable using vim, and I actually feel uncomfortable using other editors
 	* I now use git to maintain my notes, and I actually take notes on the books I am reading
 	* I created a basic python program to analyze and print my time data
-	* I understand the very basics of reST documentation and have plans to use it once I finish reading my python books.
+	* I am currently using reST for all my note-taking and understand it reasonably well.
 	* I understand and agree with the principles of Tracer Bullets, DRY, Prototyping and Post-It Notes, Orthogonality, and Ruthless Testing.
 
 WHAT CONSTITUTES SUCCESS:
@@ -30,9 +30,8 @@ FUTURE BOOKS:
 ----------------------
 	* (h) The Hitchhiker's Guide to Python (primarily for the documentation and testing sections)
 	* (h) Essentials of Programming in Mathematica
-	* (m) Mastering Regular Expressions - Amazon
-	* (l) The Art of the Metaobject Protocol - Amazon
-	* (l) Pro Git - Amazon (purchased free kindle edition)
+	* (m) Mastering Regular Expressions
+	* (l) The Art of the Metaobject Protocol
 	* Maybe a book on testing?  
 	* Effective C++ by Scott Meyer if you need it.
 
