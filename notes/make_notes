@@ -1,0 +1,18 @@
+Makefiles
+==========
+
+It looks like the basic idea behind makefiles is to automate routine tasks, typically ones involved in compilation, although it looks like makefiles can run any kind of terminal commands. I'm not sure what the difference is between this and just plain old scripts. Ah, so the difference appears to be in the deltas. You only want to compile parts of the project that have been modified, and so for larger projects make can save you hella time and provides some nice features that aren't present in a shell script, like automatic checking of recently modified files.
+
+Makefiles can also be used to do things like run tests and clean directories after building packages in interpreted languages like python.
+
+The Simplest Makefile
+---------------------
+hellomake: hellomake.c hellofunc.c
+	gcc -o hellomake hellomake.c hellofunc.c -I
+
+A Makefile with some constants
+----------------------------------
+CC=gcc
+CFLAGS=-I
+
+helllomake: helllomake.g
