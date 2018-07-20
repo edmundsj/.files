@@ -154,6 +154,11 @@ set cursorline
 " allow all forms of python highlighting
 let python_highlight_all = 1
 
+" make searching case-insensitive except when using uppercase
+set ignorecase
+set smartcase
+
+
 
 " and now we end our vundle shennanigans (must go at end of file)
 call vundle#end()
