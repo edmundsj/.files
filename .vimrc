@@ -59,14 +59,14 @@ vnoremap T J
 vnoremap C K
 vnoremap N L
  " This remaps all the netrw bindings so we can navigate sanely.
-augroup netrw_mapping
-	autocmd!
-	autocmd filetype netrw call NetrwMapping()
-augroup END
- function! NetrwMapping()
-	noremap <buffer> t j
-	noremap <buffer> c k
-endfunction
+"augroup netrw_mapping
+	"autocmd!
+	"autocmd filetype netrw call NetrwMapping()
+"augroup END
+ "function! NetrwMapping()
+	"noremap <buffer> t j
+	"noremap <buffer> c k
+"endfunction
 " these two lines allow me to use the n and c keys, and make my life easier so I don't have to push & but can just use r
 nnoremap <leader>n n
 nnoremap <leader>r &
