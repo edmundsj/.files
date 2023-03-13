@@ -21,11 +21,14 @@ cp .vimrc ~/
 cp .bashrc ~/
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# Install user packages and software
 sudo apt update
 sudo apt install -y terminator
 sudo apt install -y python3-pip
 pip insatll -r requirements.txt
 
+# Make sure firewall is installed and running in case of router firewall failure
 sudo ufw enable
 sudo ufw allow ssh
 

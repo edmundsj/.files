@@ -1,4 +1,9 @@
 # .files
-My files (including my .vimrc)
+This repository contains all my personal files and notes related to programming, including my .vimrc, .bashrc, and git settings
 
-This repository contains all my personal files and notes related to programming, including my .vimrc and my setup.sh file to configure a UNIX system to have my desired settings.
+## Setting up a new Ubuntu Machine
+
+#. Clone this repository
+#. Run `setup.sh` 
+#. Download and install google chrome, setup profile
+#. Authenticate to your password manager
